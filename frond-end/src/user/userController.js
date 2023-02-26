@@ -34,7 +34,7 @@ var updateUserController = async (req, res) =>
 var deleteUserController = async (req, res) => 
 {
      console.log(req.id);
-     var result = await userService.removeUserDBService(req.params.id);
+     var result = await userService.removeUserDBService(req, req.params.id);
      if (result) {
         res.send({ "status": true, "message": "Player Deleteddd"} );
      } else {
@@ -42,3 +42,4 @@ var deleteUserController = async (req, res) =>
      }
 }
 module.exports = { getDataConntrollerfn, createUserControllerFn,updateUserController,deleteUserController};
+

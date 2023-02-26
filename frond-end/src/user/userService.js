@@ -1,4 +1,5 @@
 var userModel = require('./userModel');
+//var id = mongoose.Types.ObjectId((req.Params.id).trim());
 
 module.exports.getDataFromDBService = () => {
 
@@ -64,19 +65,34 @@ module.exports.getDataFromDBService = () => {
     });
  }
 
- module.exports.removeUserDBService = (id) => { 
+
+ module.exports.removeUserDBService = (req, id) => { 
     return new Promise(function myFn(resolve, reject) {
-        userModel.findByIdAndRemove(req.params.id, function returnData(error, result) {
- 
-          if(error)
-          {
+        userModel.findByIdAndRemove(id, function returnData(error, result) {
+            if(error) {
                 reject(false);
-          }
-          else
-          {
-             resolve(result);
-          }          
+            } else {
+                resolve(result);
+            }          
         });
     });
+}
+
+
+
+// module.exports.removeUserDBService = (_id) => { 
+   // return new Promise(function myFn(resolve, reject) {
+      //  userModel.findByIdAndRemove(req.params._id, function returnData(error, result) {
  
- }
+       //   if(error)
+        //  {
+        //        reject(false);
+          //}
+          //else
+          //{
+            // resolve(result);
+          //}          
+        //});
+    //});
+ 
+ //}
